@@ -1,0 +1,43 @@
+﻿<Window x:Class="WpfApp3.BatteryInfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3"
+        mc:Ignorable="d"
+        Title="BatteryInfoWindow" Height="684" Width="767">
+    <Grid Margin="28,27,25,24">
+        <TextBlock HorizontalAlignment="Left" Margin="65,44,0,0" TextWrapping="Wrap" Text="Vendor Name" VerticalAlignment="Top" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Left" Margin="65,88,0,0" TextWrapping="Wrap" Text="Grade" VerticalAlignment="Top" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Left" Margin="65,137,0,0" TextWrapping="Wrap" Text="Serial No." VerticalAlignment="Top" FontSize="18"/>
+        <TextBox x:Name="vendorNameTextBox" HorizontalAlignment="Left" Margin="219,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="448" FontSize="20"/>
+        <TextBox x:Name="gradeTextBox" HorizontalAlignment="Left" Margin="219,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="448" FontSize="20"/>
+        <TextBox x:Name="serialNoTextBox" HorizontalAlignment="Left" Margin="219,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="448" FontSize="20"/>
+        <Button Content="Save" HorizontalAlignment="Left" Margin="219,192,0,0" VerticalAlignment="Top" FontSize="20" Width="117"/>
+        <DockPanel Margin="0,267,0,0">
+            <DataGrid x:Name="batteryInfoGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" FontSize="22" FontStyle="Normal" FontWeight="SemiBold">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="10*" FontSize="12"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Vendor Name" Binding="{Binding VendorName}" Width="40*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Grade" Binding="{Binding Grade}" Width="20*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="SerialNo" Binding="{Binding SerialNo}" Width="30*"></DataGridTextColumn>
+                    <DataGridTemplateColumn Width="20*">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Action"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button x:Name="editButton" Content="Edit" Click="editButton_Click"></Button>
+                                    <Button x:Name="deleteButton" Content="Delete" Click="deleteButton_Click"></Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
+    </Grid>
+</Window>
